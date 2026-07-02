@@ -280,6 +280,8 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+
+
 restartBtn.addEventListener("click", startGame);
 
 difficultySelect.disabled = true;
