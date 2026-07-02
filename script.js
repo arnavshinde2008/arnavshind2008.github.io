@@ -41,7 +41,7 @@ function startGame() {
 
 clearInterval(gameLoop);
 gameLoop = setInterval(updateGame, gameSpeed);
-}
+drawGame();}
 
 function updateGame() {
 
@@ -62,12 +62,12 @@ function updateGame() {
     }
 
     // Self Collision
-    for (let part of snake) {
-        if (head.x === part.x && head.y === part.y) {
-            gameOver();
-            return;
-        }
+    for (let i = 1; i < snake.length; i++) {
+    if (head.x === snake[i].x && head.y === snake[i].y) {
+        gameOver();
+        return;
     }
+}
 
     snake.unshift(head);
 
@@ -280,9 +280,7 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-
-
 restartBtn.addEventListener("click", startGame);
 
 difficultySelect.disabled = true;
-startGame();
+();
