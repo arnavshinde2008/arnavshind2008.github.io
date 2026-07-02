@@ -1,128 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Snake Game</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="dark">
 
-<!-- Start Screen -->
+    <!-- ===========================
+         Start Screen
+    ============================ -->
 
-<div id="startScreen">
-
-    <h1>🐍 Snake Game</h1>
-
-    <button id="playBtn">Play</button>
-
-</div>
-
-<!-- Game -->
-
-<div class="game-container">
-
-    <h1>🐍 Snake Game</h1>
-
-    <div class="settings">
-
-        <label>
-
-            <input
-                type="checkbox"
-                id="wallMode"
-                checked>
-
-            Walls
-
-        </label>
-
-        <select id="theme">
-
-            <option value="dark">Dark</option>
-            <option value="neon">Neon</option>
-            <option value="retro">Retro</option>
-
-        </select>
-
-        <select id="difficulty">
-
-            <option value="easy">Easy</option>
-            <option value="medium" selected>Medium</option>
-            <option value="hard">Hard</option>
-
-        </select>
-
+    <div id="startScreen">
+        <h1>🐍 Snake Game</h1>
+        <button id="playBtn">Play</button>
     </div>
 
-    <div class="score-board">
+    <!-- ===========================
+         Main Game
+    ============================ -->
 
-        Score :
-        <span id="score">0</span>
+    <div class="game-container" id="gameContainer">
 
-    </div>
+        <h1>🐍 Snake Game</h1>
 
-    <div class="score-board">
+        <!-- Settings -->
 
-        High Score :
-        <span id="highScore">0</span>
+        <div class="settings">
 
-    </div>
+            <label>
+                <input type="checkbox" id="wallMode" checked>
+                Walls Mode
+            </label>
 
-    <canvas
-        id="gameCanvas"
-        width="400"
-        height="400">
-    </canvas>
+            <select id="theme">
+                <option value="dark">Dark Theme</option>
+                <option value="neon">Neon Theme</option>
+                <option value="retro">Retro Theme</option>
+            </select>
 
-    <button id="restartBtn">
-
-        Restart Game
-
-    </button>
-
-    <div class="controls">
-
-        <button id="up">⬆️</button>
-
-        <div class="middle-row">
-
-            <button id="left">⬅️</button>
-
-            <button id="down">⬇️</button>
-
-            <button id="right">➡️</button>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
 
         </div>
 
+        <!-- Score -->
+
+        <div class="score-board">
+            Score :
+            <span id="score">0</span>
+        </div>
+
+        <div class="score-board">
+            High Score :
+            <span id="highScore">0</span>
+        </div>
+
+        <!-- Canvas -->
+
+        <canvas
+            id="gameCanvas"
+            width="400"
+            height="400">
+        </canvas>
+
+        <!-- Restart -->
+
+        <button id="restartBtn">
+            Restart Game
+        </button>
+
+        <!-- Mobile Controls -->
+
+        <div class="controls">
+
+            <button id="up">⬆️</button>
+
+            <div class="middle-row">
+                <button id="left">⬅️</button>
+                <button id="down">⬇️</button>
+                <button id="right">➡️</button>
+            </div>
+
+        </div>
+
+        <!-- Leaderboard -->
+
+        <div id="leaderboard"></div>
+
     </div>
 
-    <div id="leaderboard"></div>
+    <!-- ===========================
+         Game Over Screen
+    ============================ -->
 
-</div>
+    <div id="gameOverScreen">
 
-<!-- Game Over -->
+        <h1>Game Over</h1>
 
-<div id="gameOverScreen">
+        <p id="finalScore"></p>
 
-    <h1>Game Over</h1>
+        <button id="playAgainBtn">
+            Play Again
+        </button>
 
-    <p id="finalScore"></p>
+    </div>
 
-    <button id="playAgainBtn">
-
-        Play Again
-
-    </button>
-
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
