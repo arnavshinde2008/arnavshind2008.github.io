@@ -42,6 +42,12 @@ h1 {
 
     background: black;
     border: 4px solid #4CAF50;
+    border-radius: 8px;
+
+    display: block;
+    margin: 0 auto;
+
+    touch-action: none;
 }
 
 
