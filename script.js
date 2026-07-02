@@ -1,3 +1,12 @@
+const canvas = document.getElementById("gameCanvas");
+const scoreDisplay = document.getElementById("score");
+const restartBtn = document.getElementById("restartBtn");
+
+console.log(canvas);
+console.log(scoreDisplay);
+console.log(restartBtn);
+
+
 console.log("NEW SCRIPT LOADED");
 alert("NEW SCRIPT LOADED");
 
