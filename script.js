@@ -10,6 +10,9 @@ console.log(restartBtn);
 
 const gridSize = 20;
 const tileCount = canvas.width / gridSize;
+const difficultySelect = document.getElementById("difficulty");
+
+let gameSpeed = 100;
 
 let snake;
 let food;
@@ -33,8 +36,10 @@ function startGame() {
 
     generateFood();
 
-    clearInterval(gameLoop);
-    gameLoop = setInterval(updateGame, 100);
+   gameSpeed = Number(difficultySelect.value);
+
+clearInterval(gameLoop);
+gameLoop = setInterval(updateGame, gameSpeed);
 }
 
 function updateGame() {
@@ -139,6 +144,14 @@ function generateFood() {
 
         if (!onSnake) break;
     }
+}
+function gameOver() {
+
+    clearInterval(gameLoop);
+
+    difficultySelect.disabled = false;
+
+    // existing code...
 }
 
 function gameOver() {
@@ -273,4 +286,4 @@ document.addEventListener("keydown", (event) => {
 
 restartBtn.addEventListener("click", startGame);
 
-startGame();
+startGame(difficultySelect.disabled = true;);
