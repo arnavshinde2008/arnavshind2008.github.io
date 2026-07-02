@@ -111,6 +111,11 @@ function updateGame() {
     };
 
     // Wall Collision
+const wallsEnabled =
+document.getElementById("wallMode").checked;
+
+if (wallsEnabled) {
+
     if (
         head.x < 0 ||
         head.x >= tileCount ||
@@ -120,6 +125,21 @@ function updateGame() {
         gameOver();
         return;
     }
+
+} else {
+
+    if (head.x < 0)
+        head.x = tileCount - 1;
+
+    if (head.x >= tileCount)
+        head.x = 0;
+
+    if (head.y < 0)
+        head.y = tileCount - 1;
+
+    if (head.y >= tileCount)
+        head.y = 0;
+}
 
     // Self Collision
     for (let i = 1; i < snake.length; i++) {
