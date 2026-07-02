@@ -1201,7 +1201,11 @@ function endGame() {
 
     saveHighScore();
 
-    saveScore();
+    const playerName = prompt("Enter your name:");
+
+if (playerName) {
+    await submitScore(playerName, score);
+}
 
     showGameOverScreen();
 
@@ -1244,7 +1248,7 @@ window.addEventListener("load", () => {
 
     // Load saved data
     loadHighScore();
-    loadLeaderboard();
+    const scores = await getLeaderboard();
 
     // Default theme
     setTheme("dark");
@@ -1268,3 +1272,28 @@ window.addEventListener("load", () => {
     drawGame();
 
 });
+// --- Global leaderboard for arnavshinde2008.github.io ---
+// Replace with your deployed Vercel URL:
+const LEADERBOARD_API = "https://leaderboard-global.vercel.app/";
+
+// Call this when a game ends:
+async function submitScore(name, score) {
+  try {
+    const res = await fetch(LEADERBOARD_API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: name.slice(0, 20), score }),
+    });
+    const data = await res.json();
+    return data.scores; // top 10, highest first
+  } catch (err) {
+    console.error("Could not submit score", err);
+  }
+}
+
+// Fetch the top 10 any time:
+async function getLeaderboard() {
+  const res = await fetch(LEADERBOARD_API);
+  const data = await res.json();
+  return data.scores;
+}
