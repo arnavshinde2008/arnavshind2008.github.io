@@ -272,6 +272,11 @@ function gameOver() {
         canvas.width / 2,
         canvas.height / 2 + 35
     );
+    document.getElementById("gameOverScreen")
+.style.display="flex";
+
+document.getElementById("finalScore")
+.textContent="Score: "+score;
 }
 // Mobile Controls
 
