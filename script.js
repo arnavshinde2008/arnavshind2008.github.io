@@ -275,6 +275,7 @@ function gameOver() {
 }
 // Mobile Controls
 
+
 document.getElementById("up").addEventListener("click", () => {
     if (dy !== 1) {
         dx = 0;
@@ -405,4 +406,11 @@ case "Spacebar":
 restartBtn.addEventListener("click", startGame);
 
 difficultySelect.disabled = true;
+document.getElementById("playBtn")
+.addEventListener("click",()=>{
+
+document.getElementById("startScreen").style.display="none";
+
 startGame();
+
+});
