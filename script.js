@@ -1021,9 +1021,12 @@ playAgainBtn.addEventListener("click", () => {
 
     hideGameOverScreen();
 
-    startGame();
+    enableDifficulty();
+
+    showStartScreen();
 
 });
+
 // =====================================
 // GAME.JS
 // Main Game Engine
