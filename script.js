@@ -1201,13 +1201,13 @@ function endGame() {
 
     saveHighScore();
 
+    showGameOverScreen();
+    
     const playerName = prompt("Enter your name:");
 
 if (playerName) {
     await submitScore(playerName, score);
 }
-
-    showGameOverScreen();
 
 }
 
