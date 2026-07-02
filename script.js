@@ -17,6 +17,8 @@ let dx;
 let dy;
 let score;
 let gameLoop;
+let touchStartX = 0;
+let touchStartY = 0;
 
 function startGame() {
     snake = [
@@ -187,6 +189,54 @@ document.getElementById("right").addEventListener("click", () => {
         dy = 0;
     }
 });
+canvas.addEventListener("touchstart", (event) => {
+
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+
+}, { passive: true });
+canvas.addEventListener("touchend", (event) => {
+
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
+
+    const dxSwipe = touchEndX - touchStartX;
+    const dySwipe = touchEndY - touchStartY;
+
+    // Ignore tiny swipes
+    if (Math.abs(dxSwipe) < 30 && Math.abs(dySwipe) < 30) {
+        return;
+    }
+
+    // Horizontal swipe
+    if (Math.abs(dxSwipe) > Math.abs(dySwipe)) {
+
+        if (dxSwipe > 0 && dx !== -1) {
+            dx = 1;
+            dy = 0;
+        }
+
+        if (dxSwipe < 0 && dx !== 1) {
+            dx = -1;
+            dy = 0;
+        }
+
+    } else {
+
+        // Vertical swipe
+        if (dySwipe > 0 && dy !== -1) {
+            dx = 0;
+            dy = 1;
+        }
+
+        if (dySwipe < 0 && dy !== 1) {
+            dx = 0;
+            dy = -1;
+        }
+
+    }
+
+}, { passive: true });
 document.addEventListener("keydown", (event) => {
 
     switch (event.key) {
