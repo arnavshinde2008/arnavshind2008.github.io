@@ -37,6 +37,7 @@ function startGame() {
     generateFood();
 
    gameSpeed = Number(difficultySelect.value);
+    difficultySelect.disabled = true;
 
 clearInterval(gameLoop);
 gameLoop = setInterval(updateGame, gameSpeed);
@@ -145,18 +146,13 @@ function generateFood() {
         if (!onSnake) break;
     }
 }
+
+
 function gameOver() {
 
     clearInterval(gameLoop);
 
     difficultySelect.disabled = false;
-
-    // existing code...
-}
-
-function gameOver() {
-
-    clearInterval(gameLoop);
 
     ctx.fillStyle = "rgba(0,0,0,0.6)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -286,4 +282,5 @@ document.addEventListener("keydown", (event) => {
 
 restartBtn.addEventListener("click", startGame);
 
-startGame(difficultySelect.disabled = true;);
+difficultySelect.disabled = true;
+startGame();
