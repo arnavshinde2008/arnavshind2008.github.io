@@ -1,35 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
-    <label>
-<input type="checkbox" id="wallMode" checked>
-Walls Enabled
-</label>
-    <select id="theme">
-    <option>dark</option>
-    <option>neon</option>
-    <option>retro</option>
-</select>
+
+<div id="startScreen">
+    <h1>🐍 Snake Game</h1>
+
+    <button id="playBtn">
+        Play
+    </button>
+</div>
 
 <div class="game-container">
 
     <h1>🐍 Snake Game</h1>
 
-    <div class="difficulty">
+    <div class="settings">
+
+        <label>
+            <input type="checkbox" id="wallMode" checked>
+            Walls Enabled
+        </label>
+
+        <select id="theme">
+            <option value="dark">Dark</option>
+            <option value="neon">Neon</option>
+            <option value="retro">Retro</option>
+        </select>
+
         <label for="difficulty">Difficulty:</label>
 
         <select id="difficulty">
-           <option value="easy">Easy</option>
-           <option value="medium" selected>Medium</option>
-           <option value="hard">Hard</option>
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
         </select>
+
     </div>
 
     <div class="score-board">
@@ -37,13 +40,19 @@ Walls Enabled
         <span id="score">0</span>
     </div>
 
-    <!-- Game Canvas -->
+    <div class="score-board">
+        High Score:
+        <span id="highScore">0</span>
+    </div>
+
+    <div id="leaderboard"></div>
+
     <canvas id="gameCanvas" width="400" height="400"></canvas>
 
-    <!-- Restart Button -->
-    <button id="restartBtn">Restart Game</button>
+    <button id="restartBtn">
+        Restart Game
+    </button>
 
-    <!-- Mobile Controls -->
     <div class="controls">
         <button id="up">⬆️</button>
 
@@ -54,36 +63,20 @@ Walls Enabled
         </div>
     </div>
 
-<div class="score-board">
-    Score: <span id="score">0</span>
 </div>
-
-<div class="score-board">
-    High Score: <span id="highScore">0</span>
-<div id="leaderboard"></div>
-    <div id="startScreen">
-
-<h1>Snake Game</h1>
-
-<button id="playBtn">
-Play
-</button>
 
 <div id="gameOverScreen">
 
-<h1>Game Over</h1>
+    <h1>Game Over</h1>
 
-<p id="finalScore"></p>
+    <p id="finalScore"></p>
 
-<button onclick="startGame()">
-Play Again
-</button>
+    <button id="playAgainBtn">
+        Play Again
+    </button>
 
 </div>
-    
-    <!-- game-container ends here -->
 
 <script src="script.js"></script>
 
 </body>
-</html>
