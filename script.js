@@ -12,6 +12,17 @@ const gridSize = 20;
 const tileCount = canvas.width / gridSize;
 const difficultySelect = document.getElementById("difficulty");
 const highScoreDisplay = document.getElementById("highScore");
+const board =
+document.getElementById("leaderboard");
+
+board.innerHTML = "";
+
+scores.forEach((score,index)=>{
+
+    board.innerHTML +=
+    `<p>${index+1}. ${score}</p>`;
+
+});
 
 let highScore = localStorage.getItem("snakeHighScore") || 0;
 highScoreDisplay.textContent = highScore;
@@ -27,6 +38,19 @@ let gameLoop;
 let touchStartX = 0;
 let touchStartY = 0;
 let specialFood = null;
+let scores =
+JSON.parse(localStorage.getItem("leaderboard")) || [];
+scores.push(score);
+
+scores.sort((a,b)=>b-a);
+
+scores = scores.slice(0,5);
+
+localStorage.setItem(
+    "leaderboard",
+    JSON.stringify(scores)
+);
+
 function startGame() {
     snake = [
         { x: 10, y: 10 }
@@ -358,6 +382,12 @@ document.addEventListener("keydown", (event) => {
             }
             break;
     }
+});
+document.getElementById("theme")
+.addEventListener("change", function(){
+
+    document.body.className = this.value;
+
 });
 case " ":
 case "Spacebar":
