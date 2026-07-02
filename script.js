@@ -11,6 +11,10 @@ console.log(restartBtn);
 const gridSize = 20;
 const tileCount = canvas.width / gridSize;
 const difficultySelect = document.getElementById("difficulty");
+const highScoreDisplay = document.getElementById("highScore");
+
+let highScore = localStorage.getItem("snakeHighScore") || 0;
+highScoreDisplay.textContent = highScore;
 
 let gameSpeed = 100;
 
@@ -35,6 +39,14 @@ function startGame() {
     scoreDisplay.textContent = score;
 
     generateFood();
+    score++;
+scoreDisplay.textContent = score;
+
+if (score > highScore) {
+    highScore = score;
+    highScoreDisplay.textContent = highScore;
+    localStorage.setItem("snakeHighScore", highScore);
+}
 
   switch (difficultySelect.value) {
     case "easy":
