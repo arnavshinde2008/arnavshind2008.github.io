@@ -376,7 +376,9 @@ function drawSnake() {
                 ? theme.head
                 : theme.snake;
 
-        ctx.fillRect(
+        ctx.beginPath();
+
+        ctx.roundRect(
 
             segment.x * GRID_SIZE + 1,
 
@@ -384,9 +386,13 @@ function drawSnake() {
 
             GRID_SIZE - 2,
 
-            GRID_SIZE - 2
+            GRID_SIZE - 2,
+
+            5
 
         );
+
+        ctx.fill();
 
     });
 
@@ -1074,7 +1080,9 @@ function updateGame() {
 
     };
 
-    handleWalls(head);
+    if (!handleWalls(head)) {
+        return;
+    }
 
     if (checkSelfCollision(head)) {
 
@@ -1085,7 +1093,31 @@ function updateGame() {
 
     snake.unshift(head);
 
+    let ateFood = false;
+
     if (eatNormalFood(head)) {
+
+        ateFood = true;
+
+    }
+
+    if (eatSpecialFood(head)) {
+
+        ateFood = true;
+
+    }
+
+    if (!ateFood) {
+
+        snake.pop();
+
+    }
+
+    saveHighScore();
+
+    drawGame();
+
+}
 
         // Snake grows automatically
 
@@ -1112,43 +1144,43 @@ function updateGame() {
 // =============================
 // Handle Wall Mode
 // =============================
-function handleWalls(head) {
+function handleWalls(head){
 
-    if (wallModeCheckbox.checked) {
+    if(wallModeCheckbox.checked){
 
-        if (
+        if(
 
-            head.x < 0 ||
+            head.x<0 ||
 
-            head.x >= TILE_COUNT ||
+            head.x>=TILE_COUNT ||
 
-            head.y < 0 ||
+            head.y<0 ||
 
-            head.y >= TILE_COUNT
+            head.y>=TILE_COUNT
 
-        ) {
+        ){
 
             endGame();
+
+            return false;
 
         }
 
     }
 
-    else {
+    else{
 
-        if (head.x < 0)
-            head.x = TILE_COUNT - 1;
+        if(head.x<0) head.x=TILE_COUNT-1;
 
-        if (head.x >= TILE_COUNT)
-            head.x = 0;
+        if(head.x>=TILE_COUNT) head.x=0;
 
-        if (head.y < 0)
-            head.y = TILE_COUNT - 1;
+        if(head.y<0) head.y=TILE_COUNT-1;
 
-        if (head.y >= TILE_COUNT)
-            head.y = 0;
+        if(head.y>=TILE_COUNT) head.y=0;
 
     }
+
+    return true;
 
 }
 
