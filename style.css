@@ -136,3 +136,17 @@ h1 {
     border: none;
     cursor: pointer;
 }
+.dark{
+    --bg:black;
+    --snake:#00ff00;
+}
+
+.neon{
+    --bg:#050505;
+    --snake:#39ff14;
+}
+
+.retro{
+    --bg:#d2b48c;
+    --snake:#228B22;
+}
