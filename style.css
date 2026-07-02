@@ -1,152 +1,401 @@
-/* Reset default browser styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===========================
+   Reset
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* Page styling */
-body {
-    background-color: #1b1b1b;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
+/* ===========================
+   Body
+=========================== */
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
 
-    height: 100vh;
+    --bg:#1b1b1b;
+    --text:#ffffff;
+
+    background:var(--bg);
+    color:var(--text);
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+    transition:background-color .3s,color .3s;
 }
 
-/* Main game container */
-.game-container {
-    text-align: center;
+/* ===========================
+   Game Container
+=========================== */
+
+.game-container{
+
+    text-align:center;
+    padding:20px;
+    max-width:500px;
+
 }
 
-/* Title */
-h1 {
-    margin-bottom: 20px;
-    font-size: 2.5rem;
+/* ===========================
+   Title
+=========================== */
+
+h1{
+
+    font-size:2.5rem;
+    margin-bottom:20px;
+
 }
 
-/* Score */
-.score-board {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
+/* ===========================
+   Settings
+=========================== */
+
+.settings{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:20px;
+
 }
 
-/* Game canvas */
-#gameCanvas {
-    width: min(90vw, 400px);
-    height: min(90vw, 400px);
+.settings label{
 
-    background: black;
-    border: 4px solid #4CAF50;
-    border-radius: 8px;
+    font-size:1rem;
 
-    display: block;
-    margin: 0 auto;
-
-    touch-action: none;
 }
 
+.settings select{
 
-/* Restart button */
-#restartBtn {
-    margin-top: 20px;
-    padding: 12px 25px;
+    padding:8px 12px;
 
-    font-size: 1rem;
-    font-weight: bold;
+    border:none;
 
-    border: none;
-    border-radius: 6px;
+    border-radius:8px;
 
-    background-color: #4CAF50;
-    color: white;
+    cursor:pointer;
 
-    cursor: pointer;
-
-    transition: background-color 0.3s ease,
-                transform 0.2s ease;
 }
 
-/* Hover effect */
-#restartBtn:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
+/* ===========================
+   Difficulty
+=========================== */
+
+.difficulty{
+
+    margin-bottom:20px;
+
+    font-size:1.1rem;
+
 }
 
-/* Click effect */
-#restartBtn:active {
-    transform: scale(0.98);
-}
-/* Mobile Controls */
+.difficulty select{
 
-.controls {
-    margin-top: 20px;
-}
+    padding:8px 12px;
 
-.middle-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+    border-radius:8px;
+
+    border:none;
+
+    cursor:pointer;
+
 }
 
-.controls button {
-    width: 70px;
-    height: 70px;
+/* ===========================
+   Score
+=========================== */
 
-    font-size: 2rem;
+.score-board{
 
-    border: none;
-    border-radius: 12px;
+    margin:10px 0;
 
-    background-color: #4CAF50;
-    color: white;
+    font-size:1.2rem;
 
-    cursor: pointer;
+    font-weight:bold;
 
-    transition: 0.2s;
 }
 
-.controls button:hover {
-    background-color: #45a049;
+/* ===========================
+   Leaderboard
+=========================== */
+
+#leaderboard{
+
+    margin-top:15px;
+
+    padding:12px;
+
+    background:#2b2b2b;
+
+    border-radius:8px;
+
 }
 
-.controls button:active {
-    transform: scale(0.95);
+#leaderboard p{
+
+    margin:5px 0;
+
 }
-/* Hide mobile controls on desktop */
-@media (min-width: 768px) {
-    .controls {
-        display: none;
+
+/* ===========================
+   Canvas
+=========================== */
+
+#gameCanvas{
+
+    width:min(90vw,420px);
+    height:min(90vw,420px);
+
+    max-width:420px;
+    max-height:420px;
+
+    background:black;
+
+    border:4px solid #4CAF50;
+
+    border-radius:10px;
+
+    display:block;
+
+    margin:20px auto;
+
+    touch-action:none;
+
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+#restartBtn,
+#playBtn,
+#playAgainBtn{
+
+    margin-top:20px;
+
+    padding:12px 25px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#4CAF50;
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+#restartBtn:hover,
+#playBtn:hover,
+#playAgainBtn:hover{
+
+    transform:scale(1.05);
+
+}
+
+#restartBtn:active,
+#playBtn:active,
+#playAgainBtn:active{
+
+    transform:scale(.97);
+
+}
+
+/* ===========================
+   Mobile Controls
+=========================== */
+
+.controls{
+
+    margin-top:20px;
+
+}
+
+.middle-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:10px;
+
+}
+
+.controls button{
+
+    width:70px;
+    height:70px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#4CAF50;
+
+    color:white;
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.controls button:hover{
+
+    background:#45a049;
+
+}
+
+.controls button:active{
+
+    transform:scale(.95);
+
+}
+
+/* Hide controls on desktop */
+
+@media(min-width:768px){
+
+    .controls{
+
+        display:none;
+
     }
-}
-.difficulty {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
+
 }
 
-.difficulty select {
-    padding: 8px 12px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+/* ===========================
+   Start Screen
+=========================== */
+
+#startScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#111;
+
+    z-index:1000;
+
 }
+
+/* ===========================
+   Game Over Screen
+=========================== */
+
+#gameOverScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    background:rgba(0,0,0,.85);
+
+    z-index:1000;
+
+}
+
+/* ===========================
+   Themes
+=========================== */
+
 .dark{
-    --bg:black;
+
+    --bg:#1b1b1b;
+
+    --text:white;
+
     --snake:#00ff00;
+
 }
 
 .neon{
+
     --bg:#050505;
+
+    --text:#39ff14;
+
     --snake:#39ff14;
+
 }
 
 .retro{
+
     --bg:#d2b48c;
+
+    --text:#222;
+
     --snake:#228B22;
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+    h1{
+
+        font-size:2rem;
+
+    }
+
+    .settings{
+
+        flex-direction:column;
+
+    }
+
+    .controls button{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:1.7rem;
+
+    }
+
 }
