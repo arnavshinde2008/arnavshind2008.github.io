@@ -36,12 +36,26 @@ function startGame() {
 
     generateFood();
 
-   gameSpeed = Number(difficultySelect.value);
+  switch (difficultySelect.value) {
+    case "easy":
+        gameSpeed = 150;
+        break;
+
+    case "medium":
+        gameSpeed = 100;
+        break;
+
+    case "hard":
+        gameSpeed = 60;
+        break;
+}
     difficultySelect.disabled = true;
 
 clearInterval(gameLoop);
 gameLoop = setInterval(updateGame, gameSpeed);
-drawGame();}
+
+drawGame();
+}
 
 function updateGame() {
 
