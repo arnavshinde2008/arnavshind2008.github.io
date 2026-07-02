@@ -158,7 +158,12 @@ function gameOver() {
         canvas.height / 2 + 35
     );
 }
-
+document.getElementById("up").addEventListener("click", () => {
+    if (dy !== 1) {
+        dx = 0;
+        dy = -1;
+    }
+});
 document.addEventListener("keydown", (event) => {
 
     switch (event.key) {
