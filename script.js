@@ -1010,6 +1010,8 @@ playBtn.addEventListener("click", () => {
 // =============================
 restartBtn.addEventListener("click", () => {
 
+    enableDifficulty();
+
     startGame();
 
 });
@@ -1022,8 +1024,6 @@ playAgainBtn.addEventListener("click", () => {
     hideGameOverScreen();
 
     enableDifficulty();
-
-    showStartScreen();
 
 });
 
