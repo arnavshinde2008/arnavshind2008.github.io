@@ -1,3 +1,6 @@
+console.log("NEW SCRIPT LOADED");
+alert("NEW SCRIPT LOADED");
+
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
