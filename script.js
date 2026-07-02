@@ -17,7 +17,7 @@ let highScore = localStorage.getItem("snakeHighScore") || 0;
 highScoreDisplay.textContent = highScore;
 
 let gameSpeed = 100;
-
+let paused = false;
 let snake;
 let food;
 let dx;
@@ -26,7 +26,7 @@ let score;
 let gameLoop;
 let touchStartX = 0;
 let touchStartY = 0;
-
+let specialFood = null;
 function startGame() {
     snake = [
         { x: 10, y: 10 }
@@ -41,6 +41,40 @@ function startGame() {
     generateFood();
     score++;
 scoreDisplay.textContent = score;
+
+if (Math.random() < 0.2) {
+
+    specialFood = {
+        x: Math.floor(Math.random() * tileCount),
+        y: Math.floor(Math.random() * tileCount)
+    };
+
+}
+if (specialFood) {
+
+    ctx.fillStyle = "gold";
+
+    ctx.beginPath();
+    ctx.arc(
+        specialFood.x * gridSize + gridSize / 2,
+        specialFood.y * gridSize + gridSize / 2,
+        gridSize / 2.5,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+}
+if (
+    specialFood &&
+    head.x === specialFood.x &&
+    head.y === specialFood.y
+) {
+
+    score += 5;
+
+    specialFood = null;
+}
 
 if (score > highScore) {
     highScore = score;
@@ -305,6 +339,18 @@ document.addEventListener("keydown", (event) => {
             break;
     }
 });
+case " ":
+case "Spacebar":
+
+    paused = !paused;
+
+    if (paused) {
+        clearInterval(gameLoop);
+    } else {
+        gameLoop = setInterval(updateGame, gameSpeed);
+    }
+
+    break;
 
 restartBtn.addEventListener("click", startGame);
 
