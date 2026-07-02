@@ -1,20 +1,12 @@
 const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
 const scoreDisplay = document.getElementById("score");
 const restartBtn = document.getElementById("restartBtn");
 
 console.log(canvas);
 console.log(scoreDisplay);
 console.log(restartBtn);
-
-
-console.log("NEW SCRIPT LOADED");
-alert("NEW SCRIPT LOADED");
-
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-
-const scoreDisplay = document.getElementById("score");
-const restartBtn = document.getElementById("restartBtn");
 
 const gridSize = 20;
 const tileCount = canvas.width / gridSize;
