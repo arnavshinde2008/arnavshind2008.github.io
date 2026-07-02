@@ -37,13 +37,13 @@ h1 {
 
 /* Game canvas */
 #gameCanvas {
-    background-color: #000000;
-    border: 4px solid #4CAF50;
-    border-radius: 8px;
+    width: min(90vw, 400px);
+    height: min(90vw, 400px);
 
-    display: block;
-    margin: 0 auto;
+    background: black;
+    border: 4px solid #4CAF50;
 }
+
 
 /* Restart button */
 #restartBtn {
