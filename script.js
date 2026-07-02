@@ -158,10 +158,33 @@ function gameOver() {
         canvas.height / 2 + 35
     );
 }
+// Mobile Controls
+
 document.getElementById("up").addEventListener("click", () => {
     if (dy !== 1) {
         dx = 0;
         dy = -1;
+    }
+});
+
+document.getElementById("down").addEventListener("click", () => {
+    if (dy !== -1) {
+        dx = 0;
+        dy = 1;
+    }
+});
+
+document.getElementById("left").addEventListener("click", () => {
+    if (dx !== 1) {
+        dx = -1;
+        dy = 0;
+    }
+});
+
+document.getElementById("right").addEventListener("click", () => {
+    if (dx !== -1) {
+        dx = 1;
+        dy = 0;
     }
 });
 document.addEventListener("keydown", (event) => {
