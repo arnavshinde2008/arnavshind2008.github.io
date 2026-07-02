@@ -1075,14 +1075,11 @@ function updateGame() {
     const head = {
 
         x: snake[0].x + direction.x,
-
         y: snake[0].y + direction.y
 
     };
 
-    if (!handleWalls(head)) {
-        return;
-    }
+    if (!handleWalls(head)) return;
 
     if (checkSelfCollision(head)) {
 
@@ -1119,27 +1116,6 @@ function updateGame() {
 
 }
 
-        // Snake grows automatically
-
-    }
-
-    else if (eatSpecialFood(head)) {
-
-        // Snake also grows
-
-    }
-
-    else {
-
-        snake.pop();
-
-    }
-
-    saveHighScore();
-
-    drawGame();
-
-}
 
 // =============================
 // Handle Wall Mode
