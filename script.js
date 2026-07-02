@@ -1245,7 +1245,7 @@ function resetGame() {
 // =====================================
 // --- Global leaderboard for arnavshinde2008.github.io ---
 // Replace with your deployed Vercel URL:
-const LEADERBOARD_API = "https://leaderboard-global.vercel.app/";
+const LEADERBOARD_API = "https://leaderboard-global.vercel.app/api/scores";
 
 // Call this when a game ends:
 async function submitScore(name, score) {
