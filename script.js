@@ -632,6 +632,7 @@ function saveScore() {
 
 }
 
+
 // =============================
 // Update Leaderboard Display
 // =============================
@@ -1022,8 +1023,8 @@ restartBtn.addEventListener("click", () => {
 playAgainBtn.addEventListener("click", () => {
 
     hideGameOverScreen();
-
     enableDifficulty();
+    
 
 });
 
@@ -1191,25 +1192,26 @@ function checkSelfCollision(head) {
 // =============================
 // End Game
 // =============================
-function endGame() {
+async function endGame() {
 
     clearInterval(gameLoop);
-
     clearTimeout(specialFoodTimer);
 
     enableDifficulty();
 
     saveHighScore();
+    saveScore();
 
     showGameOverScreen();
-    
+
     const playerName = prompt("Enter your name:");
 
-if (playerName) {
-    await submitScore(playerName, score);
+    if (playerName) {
+        await submitScore(playerName, score);
+        await displayGlobalLeaderboard();
+    }
 }
-
-}
+saveScore();
 
 // =============================
 // Reset Game
@@ -1269,11 +1271,55 @@ async function getLeaderboard() {
   return data.scores;
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
 
-    // Load saved data
     loadHighScore();
-    const scores = await getLeaderboard();
+    loadLeaderboard();
+    await displayGlobalLeaderboard();
+
+   
+
+    setTheme("dark");
+
+    document.querySelector(".game-container").style.display = "none";
+
+    showStartScreen();
+
+    snake = [
+        { x: 10, y: 10 }
+    ];
+
+    food = {
+        x: 15,
+        y: 10
+    };
+
+    drawGame();
+});
+async function displayGlobalLeaderboard() {
+
+    try {
+
+        const scores = await getLeaderboard();
+
+        leaderboard.innerHTML = "<h2>Global Leaderboard</h2>";
+
+        scores.forEach((player, index) => {
+
+            const row = document.createElement("p");
+
+            row.textContent =
+                `${index + 1}. ${player.name} - ${player.score}`;
+
+            leaderboard.appendChild(row);
+        });
+
+    } catch (error) {
+
+        console.error("Leaderboard loading failed:", error);
+
+    }
+}
 
     // Default theme
     setTheme("dark");
